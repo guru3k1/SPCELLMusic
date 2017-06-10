@@ -1,6 +1,6 @@
 <template lang="pug">
   #app
-    img(src='/dist/spcell.png')
+    img(src='dist/spcell.png')
     h1 SPCELL Music
     h2 Lo mejor de {{ selectedCountry }}
     select(v-model="selectedCountry")
