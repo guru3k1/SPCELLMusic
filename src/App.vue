@@ -1,8 +1,8 @@
 <template lang="pug">
   #app
-    img(src='dist/spcell.png')
+    img(src='https://guru3k1.github.io/SPCELLMusic/dist/spcell.png')
     h1 SPCELL Music
-    h2 Lo mejor de {{ selectedCountry }}
+    h2 Lo mejor de {{ selectedCountry | capitalize}} según <a  :href="url" target="_blank">{{pagina}}</a>
     select(v-model="selectedCountry")
       option(v-for="country in countries" :value="country.value") {{ country.name }}
     spinner(v-show="loading")
@@ -19,6 +19,8 @@ export default {
   name: 'app',
   data () {
     return {
+      url: 'https://www.last.fm/home',
+      pagina: 'last.fm',
       artists: [],
       countries: [
         { name: 'Argentina', value: 'argentina' },
@@ -37,6 +39,11 @@ export default {
   {
     Artist,
     Spinner
+  },
+  filters:{
+    capitalize: function (str){
+      return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+    }
   },
   methods:{
     refreshArtists(){
